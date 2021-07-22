@@ -211,8 +211,8 @@ def create_odometry_feat_net(input_shape, cfg, arch_cfg, device):
         raise ValueError("Wrong odometry feature network {}".format(feat_name))
 
     feat_net.to(device)
-
-    if feat_cfg['pretrained']:
+    
+    if feat_name == 'fusion-layer-soft' and feat_cfg['pretrained']:
         model_path = feat_cfg['model-path']
         load_state_dict(feat_net, model_path)
         feat_net.pretrained = True
